@@ -16,8 +16,9 @@
 </head>
 <body>
   <div class="container">
-    <div class="weather-wrapper">
+    <div class="weather-app-wrapper">
     <div class="weather-app">
+      <div class="overview">
 <div class="row">
   <div class="col">
  <form>
@@ -40,14 +41,21 @@
     <li>Wednesday 12:50,</li>
     <li>cloudy</li>
   </ul>
+  </div>
   <div class="row">
 <div class="col-6">
+    <div class="clearflix">
+      <!-- for align things  --> 
+    <div class="d-flex weather-temperature">
 <img 
 src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
- alt="sunny"/>
-
- 12℃|℉
-
+ alt="clear" id="icon"/>
+ <div>
+ <strong >12</strong><span class="units">℃|
+  <a href="#">℉</a></span>
+</div>
+</div>
+</div>
 </div>
 <div class="col-6">
 <ul>
