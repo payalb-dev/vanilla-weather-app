@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-         crossorigin="anonymous"></script>
+         crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="src/style.css">
   <title>weather-app</title>
 
@@ -34,12 +35,12 @@
 
       <a href="" class="btn btn-primary">search</a>
       </div>
-  <h1>
+  <h1 id = "city">
    New York
   </h1>
   <ul>
-    <li>Wednesday 12:50,</li>
-    <li>cloudy</li>
+    <li id = "date">Wednesday 12:50,</li>
+    <li id ="description">cloudy</li>
   </ul>
   </div>
   <div class="row">
@@ -51,7 +52,7 @@
 src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
  alt="clear" id="icon"/>
  <div>
- <strong >12</strong><span class="units">℃|
+ <strong id =temperature></strong><span class="units">℃|
   <a href="#">℉</a></span>
 </div>
 </div>
@@ -59,9 +60,9 @@ src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
 </div>
 <div class="col-6">
 <ul>
-  <li>Precipitation: 0%</li>
-  <li>Humidity: 43%</li>
-  <li>Wind: 13 km/h</li>
+  <!-- <li>Precipitation: 0% //says when its raining -->
+  <li>Humidity: <span id="humidity">  43 </span>%</li>
+  <li>Wind:<span id="wind"> 13 </span>  km/h</li>
 </ul>
 </div>
 
