@@ -19,26 +19,25 @@
   <div class="container">
     <div class="weather-app-wrapper">
     <div class="weather-app">
+      <form id="search-form" class="mb-3">
+       <!-- margin bottom mb-3 through bootstrap -->
+        <div class="row">
+          <div class="col-9">
+        <input type="search" placeholder="Type a city name..." id ="city-input"
+        autocomplete="off"
+       class="form-control"/>
+       </div>
+          <div class="col-3">
+          <input type ="submit"class="btn btn-primary w-100" value="Search"/>
+          <!-- w-100 is width : 100 -->
+          </div>
+        </div>  
+      </form>
       <div class="overview">
-<div class="row">
-  <div class="col">
- <form>
-
-
-
-
- </form>
-
-
-
-  </div>
-
-      <a href="" class="btn btn-primary">search</a>
-      </div>
-  <h1 id = "city">
-   New York
-  </h1>
-  <ul>
+       <h1 id = "city">
+        New York
+       </h1>
+      <ul>
     <li> Last updated at:<span id ="date">Wednesday 12:50</span></li>
     <li id ="description">cloudy</li>
   </ul>
