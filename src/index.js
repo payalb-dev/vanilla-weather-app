@@ -32,7 +32,10 @@ function displayTemperature(response){
       let windElement =document.querySelector("#wind");
       let dateElement = document.querySelector("#date");
       let iconElement = document.querySelector("#icon");
-    temperatureElement.innerHTML = Math.round(response.data.main.temp);
+
+      celsiusTemperature = response.data.main.temp;
+
+    temperatureElement.innerHTML = Math.round(celsiusTemperature);
     cityElement.innerHTML =response.data.name;
      descriptionElement.innerHTML =response.data.weather[0].description;
      humidityElement.innerHTML =response.data.main.humidity;
@@ -58,13 +61,25 @@ search(cityInputElement.value);
 function displayFahrenheitTemperature(event){
   event.preventDefault();
    let temperatureElement = document.querySelector("#temperature");
-  let fahrenheitTemperature = (temperatureElement.innerHTML * 9)/5 + 32 ;
+  let fahrenheitTemperature = (celsiusTemperature * 9)/5 + 32 ;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
+function displayCelsiusTemperature(event){
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML= Math.round(celsiusTemperature);
+}
+
+
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit",handleSubmit);
-search("Lisbon");
+
+let celsiusTemperature = null;
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click",displayCelsiusTemperature);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click",displayFahrenheitTemperature);
+search("Lisbon");
