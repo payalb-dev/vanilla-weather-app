@@ -60,12 +60,17 @@ search(cityInputElement.value);
 }
 function displayFahrenheitTemperature(event){
   event.preventDefault();
+  // remove active class celsius and add fahrenheit
+    celsiusLink.classList.remove("acrive");
+    fahrenheitLink.classList.add("active");
    let temperatureElement = document.querySelector("#temperature");
   let fahrenheitTemperature = (celsiusTemperature * 9)/5 + 32 ;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 function displayCelsiusTemperature(event){
   event.preventDefault();
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML= Math.round(celsiusTemperature);
 }
