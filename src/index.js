@@ -20,9 +20,63 @@ let day = days[date.getDay()];
   return `${day}, ${hours}:${minutes}`;
 
 }
+function formatDay(timestamp){
+  let date =new Date(timestamp*1000);
+  let day = date.getDay();
+  days =["Sun","Mon","Tues","Wed","Thus","Fri","Sat"];
+  return  days[day];
+}
 
 
+function displayForecast(response){
+  let forecastElement =document.querySelector("#forecast");
+ let forecast = response.data.daily;
+    //dynamic html using javascript
+  let forecastHtml=`<div class="row">`;
+  //forecastHtml =forecastHTML+forecastHtml = string concantination  and also helps to append
+ // through the variable it append
 
+    forecast.forEach(function(forecastDay,index)  {
+    if(index<6){
+
+    
+
+  forecastHtml=
+   forecastHtml+
+  `
+ <div class="col-2">
+  <div class="weather-forecast-date">${formatDay(forecastDay.dt)}
+  </div>
+  <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
+  alt="" 
+  width="42"
+  />
+  <div class="weather-forecast-temperature">
+    <span class="weather-forecast-temperature-max">
+    ${Math.round(forecastDay.temp.max)}°
+    </span>
+    <span class="weather-forecast-temperature-min">
+     ${Math.round(forecastDay.temp.min)}°
+    </span>
+    </div>
+
+</div>
+    
+`; 
+    }
+ });
+  forecastHtml=forecastHtml+`</div>`;
+forecastElement.innerHTML=forecastHtml;
+}
+//if we are putting direct in innerHtml or creating div rows and col many times: it overwrite (selecting below one)doesnot append.
+//repeating code
+function getForecast(coordinates){
+  console.log(coordinates);
+ let apiKey ="99b8f9330a1bfba3a85e523fd3c2e528";
+  let apiUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+console.log(apiUrl);
+axios.get(apiUrl).then(displayForecast);
+}
 function displayTemperature(response){
   console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
@@ -45,7 +99,9 @@ function displayTemperature(response){
      //image is broken use alterative with description
      iconElement.setAttribute("alt",response.data.weather[0].description);
     
+     getForecast(response.data.coord);
 }
+
 function search(city){
 let apiKey ="99b8f9330a1bfba3a85e523fd3c2e528";
 let apiUrl =`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
